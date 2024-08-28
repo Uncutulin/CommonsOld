@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Contact";
+    Layout = "";
+}
+
+
+
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>@ViewData["Title"]</h2>
+        <h3>@ViewData["Message"]</h3>
+        @*<img src="https://wallpaperplay.com/walls/full/d/9/b/44840.jpg" height="5px" />*@
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <h3>Form vista total</h3>
+        <form asp-action="Privacy">
+            <input name="id" type="hidden" value="123"/>
+    
+            <input name="bool" type="checkbox"/>
+            <br />
+            <button class="btn btn-danger" type="submit">Aceptar</button>
+        </form>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <h3>Form vista parcial</h3>
+        <form data-loader-text="Testo" asp-action="_Partial" method="post">
+            <input name="id" type="hidden" value="123"/>
+    
+            <input name="bool" type="checkbox"/>
+            <br />
+            <button class="btn btn-info" type="submit">Aceptar</button>
+        </form>
+    </div>
+</div>

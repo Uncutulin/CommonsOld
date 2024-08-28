@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<h2>@ViewData["Title"]</h2>
+
+<p>Use this page to detail your site's privacy policy.</p>
+
+<a data-ajax="true" data-conf="Segurp?/" asp-action="ErrorAsync" data-ajax-failure="xhrError">test</a>
+
+<a onclick="modaltest();">test</a>
+
+
+<modal function="modaltest" title="test">
+    
+    <a data-ajax="true" data-confa="Segurp?/" asp-action="ErrorAsync" data-ajax-failure="xhrError">test</a>
+
+</modal>
+
+
+
+<script>
+    completed = function(xhr) {
+        //alert(`Hi ${xhr.responseText}!`);
+        showError2(xhr.responseText, xhr.status);
+    };
+
+
+    function showError2(text, status) {
+        var modal = $('#dataConfirmModal');
+
+        console.log('open ' + modal.hasClass('in'));
+        
+        modal.find('#dataConfirmText').text(text);
+
+        modal.find('#dataConfirmYes').addClass("hidden");
+
+        modal.find('#dataConfirmNo').text('Volver');
+
+        modal.find('#dataConfirmTitle').text('Error');
+
+        modal.find('#dataConfirmIcon').attr("class", "fa fa-exclamation");
+
+        modal.modal('show');
+        document.querySelectorAll('.modal-backdrop').forEach(function (a) {
+            a.remove();
+        });
+
+    }
+</script>

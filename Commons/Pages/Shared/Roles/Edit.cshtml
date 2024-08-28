@@ -1,0 +1,55 @@
+﻿@using Commons.Identity
+@model Commons.Identity.CommonsRole
+@addTagHelper *, Commons
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewBag.Title = $"Editar rol: {Model.ShowName}";
+    Layout = "_Layout";
+    ViewData["BackArrow"] = "/SecurityRoles/Index";
+}
+
+
+
+<box color="Primary">
+    <box-header title="Funciones del rol">
+        <a class="btn btn-primary btn-sm" onclick="AddFunction('@Model.Id')">Añadir</a>
+    </box-header>
+    <box-body table="true">
+        <table class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        Descripción
+                    </th>
+                    <th>
+
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+
+            @foreach (var x in Model.RoleFunctions)
+            {
+                var function = x.Function;
+                <tr>
+                    <td>
+                        @function.Name
+                    </td>
+                    <td>
+                        @function.Description
+                    </td>
+                    <td>
+                        <a asp-action="RemoveFunction" asp-route-functionId="@function.Id" asp-route-roleId="@Model.Id">
+                            <i class="fa fa-remove"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </box-body>
+</box>
+<modal function="AddFunction" title="Seleccione una función" load-url="/SecurityRoles/_AddFunction/"></modal>

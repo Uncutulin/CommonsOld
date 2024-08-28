@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Commons.Models.Message>
+@if (Model.Any())
+{
+    <ol class="breadcrumb">
+        @foreach (var message in Model)
+        {
+            if (Model.Last() == message)
+            {
+                <li class="active">
+                    @if (message.FontAwesomeIcon != null)
+                    {
+                        <i class="@message.FontAwesomeIcon"></i>
+                    }
+                    @message.DisplayName
+                </li>
+            }
+            else
+            {
+                <li>
+                    <a href="@message.URLPath">
+                        @if (message.FontAwesomeIcon != null)
+                        {
+                            <i class="@message.FontAwesomeIcon"></i>
+                        }
+                        @message.DisplayName
+                    </a>
+                </li>
+            }
+        }
+    </ol>
+}

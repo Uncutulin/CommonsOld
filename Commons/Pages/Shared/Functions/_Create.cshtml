@@ -1,0 +1,42 @@
+﻿@model Commons.Identity.CommonsFunction
+@addTagHelper *, Commons
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+<form asp-action="_Create" data-loader-text="Creando función...">
+    <div class="row">
+        <div class="col-md-12">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Nombre</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label">Descripción</label>
+                <textarea asp-for="Description" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="icheck-material-grey">
+                    <input asp-for="Display" />
+                    <label asp-for="Display">Mostrar</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <input type="submit" value="Crear" class="btn btn-danger" />
+            </div>
+        </div>
+    </div>
+</form>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

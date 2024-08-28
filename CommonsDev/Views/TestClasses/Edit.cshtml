@@ -1,0 +1,73 @@
+﻿@model CommonsDev.Models.TestClass
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>TestClass</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="CreationDate" class="control-label"></label>
+                <input asp-for="CreationDate" class="form-control" />
+                <span asp-validation-for="CreationDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeletedDate" class="control-label"></label>
+                <input asp-for="DeletedDate" class="form-control" />
+                <span asp-validation-for="DeletedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeletedById" class="control-label"></label>
+                <input asp-for="DeletedById" class="form-control" />
+                <span asp-validation-for="DeletedById" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastEditTime" class="control-label"></label>
+                <input asp-for="LastEditTime" class="form-control" />
+                <span asp-validation-for="LastEditTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastEditById" class="control-label"></label>
+                <input asp-for="LastEditById" class="form-control" />
+                <span asp-validation-for="LastEditById" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Display" /> @Html.DisplayNameFor(model => model.Display)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Show" /> @Html.DisplayNameFor(model => model.Show)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

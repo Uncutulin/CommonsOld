@@ -1,0 +1,24 @@
+﻿@using Commons.Identity
+@model string
+@addTagHelper *, Commons
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<div id="assignDiv">
+    <div class="row">
+        <div class="col-md-12 ">
+            <span class="text-muted">
+                <p style="text-align: center; margin: 0">El usuario es administrador y tiene acceso a todas las funciones del workspace.</p>
+                <a asp-action="_RemoveAdmin"
+                   asp-controller="SecurityRoles"
+                   asp-route-userId="@Model"
+                   data-ajax="true"
+                   data-ajax-method="GET"
+                   data-ajax-mode="replace"
+                   data-ajax-update="#assignDiv">
+                    <p style="text-align: center; margin: 0">Remover administrador</p>
+                </a>
+            </span>
+
+        </div>
+    </div>
+</div>

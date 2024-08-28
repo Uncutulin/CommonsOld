@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29021.104
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonsDev", "CommonsDev\CommonsDev.csproj", "{7B70252F-D935-4686-A3BC-443FC7098365}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commons", "Commons\Commons.csproj", "{47E2DC8A-D29F-482A-88AC-E920AF7C54DC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonsUI", "CommonsUI\CommonsUI.csproj", "{96961AAB-B207-42CB-A2F6-0101ECD1F2FC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7B70252F-D935-4686-A3BC-443FC7098365}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B70252F-D935-4686-A3BC-443FC7098365}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B70252F-D935-4686-A3BC-443FC7098365}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B70252F-D935-4686-A3BC-443FC7098365}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47E2DC8A-D29F-482A-88AC-E920AF7C54DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47E2DC8A-D29F-482A-88AC-E920AF7C54DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47E2DC8A-D29F-482A-88AC-E920AF7C54DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47E2DC8A-D29F-482A-88AC-E920AF7C54DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96961AAB-B207-42CB-A2F6-0101ECD1F2FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96961AAB-B207-42CB-A2F6-0101ECD1F2FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96961AAB-B207-42CB-A2F6-0101ECD1F2FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96961AAB-B207-42CB-A2F6-0101ECD1F2FC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E5E23343-E038-4B9E-B748-245725A8C733}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 1
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://iscoderscode.visualstudio.com/
+		SccProjectUniqueName0 = Commons\\Commons.csproj
+		SccProjectName0 = Commons
+		SccAuxPath0 = https://iscoderscode.visualstudio.com
+		SccLocalPath0 = Commons
+		SccProvider0 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+	EndGlobalSection
+EndGlobal

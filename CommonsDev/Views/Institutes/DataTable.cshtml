@@ -1,0 +1,84 @@
+﻿@using Commons.HtmlHelpers
+@model CommonsDev.Data.Institute
+
+@{
+    ViewData["Title"] = "Institutos";
+}
+
+<style>
+    .table thead > tr > th, .table thead > tr > td {
+        border-bottom: 2px solid black;
+    }
+    .table-bordered {
+        border-bottom: 2px solid black;
+    }
+</style>
+
+<box color="Danger">
+    <box-header minimize="true" title="Datatable manual">
+    </box-header>
+    <box-body table="true">
+        <table class="table table-bordered table-responsive" id="PeopleListTable"></table>
+    </box-body>
+</box>
+
+
+<script src="https://cdn.datatables.net/fixedheader/3.1.6/js/dataTables.fixedHeader.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
+
+<script type="text/javascript">
+
+    $(function() {
+        var table = $('#PeopleListTable').DataTable({
+            serverSide: true,
+            processing: true,
+
+
+
+            ajax: {
+                url: '@Url.Action("Data2", "Institutes")',
+                type: "POST"
+            },
+            rowId: 'Id',
+            columns: [
+                { data: "Id", title: "Id" }, { data: "Name", title: "Name" },
+                { data: "LongName", title: "Long Name" }, { data: "Test.Name", title: "Navigation" },
+                { data: "GimmeFives", title: "Five" }, {
+                    "title": "Actions",
+                    "sortable": false,
+                    "render": function(data, type, row) {
+                        var action = '';
+                        {
+                            action = action +
+                                `<a data-toggle="tooltip" title="" data-placement="top" data-original-title="Editar" href=/Institutes/Edit/` +
+                                row['Id'] +
+                                `><i style='color: red' class='fa fa-edit'></i></a> | `;
+                            action = action +
+                                @Html.DataTableButton( "/Home/Action/${row['Id']}","asd", "fa fa-edit", BoxColor.Warning);
+                        }
+                        return action;
+                    }
+                }, {
+                    "title": "Contains a",
+                    "sortable": true,
+                    "render": function(data, type, row) {
+                        if (type === "sort" || type === 'type') {
+                            return row.Name;
+                        } else {
+                            if (row.Name.includes('A')) {
+                                return `<span class="label label-success">Sí</span>`;
+                            } else {
+                                return `<span class="label label-danger">No</span>`;
+                            }
+                        }
+                    }
+                },
+            ]
+        });
+        new $.fn.dataTable.FixedHeader(table);
+    });
+
+
+</script>
+

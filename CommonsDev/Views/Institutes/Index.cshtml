@@ -1,0 +1,34 @@
+﻿@model CommonsDev.Data.Institute
+
+@{
+    ViewData["Title"] = "Institutos";
+}
+
+<box color="Info">
+    <box-header title="Datatable con el framework">
+        <a asp-action="RandomInstitutes" class="btn btn-danger btn-sm">Generate random</a>
+    </box-header>
+    <box-body>
+
+        <data-table class="table table-hover table-bordered table-responsive" url-data="@Url.Action("Data")">
+            <data-table-columns>
+                <data-table-column property-name="Id"></data-table-column>
+                <data-table-column asp-for="Name"></data-table-column>
+                <data-table-column asp-for="LongName"></data-table-column>
+                <data-table-column asp-for="Test.Name"></data-table-column>
+                <data-table-column>
+                    <data-table-column-action asp-action="Details" asp-controller="Institutes" title="Detalles">
+                        <i class="fa fa-info-circle"></i>
+                    </data-table-column-action>
+                    <data-table-column-action asp-action="Edit" asp-controller="Institutes" title="Editar">
+                        <i class="fa fa-edit"></i>
+                    </data-table-column-action>
+                    <data-table-column-action asp-action="Delete" asp-controller="Institutes" title="Eliminar">
+                        <i class="fa fa-remove"></i>
+                    </data-table-column-action>
+                </data-table-column>
+            </data-table-columns>
+        </data-table>
+
+    </box-body>
+</box>

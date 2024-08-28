@@ -1,0 +1,10 @@
+C:\Users\jocutuli\Desktop\Commons MVC\Commons MVC\CommonsUI\bin\Debug\netcoreapp2.1\CommonsUI.deps.json
+C:\Users\jocutuli\Desktop\Commons MVC\Commons MVC\CommonsUI\bin\Debug\netcoreapp2.1\CommonsUI.dll
+C:\Users\jocutuli\Desktop\Commons MVC\Commons MVC\CommonsUI\bin\Debug\netcoreapp2.1\CommonsUI.pdb
+C:\Users\jocutuli\Desktop\Commons MVC\Commons MVC\CommonsUI\obj\Debug\netcoreapp2.1\CommonsUI.csproj.AssemblyReference.cache
+C:\Users\jocutuli\Desktop\Commons MVC\Commons MVC\CommonsUI\obj\Debug\netcoreapp2.1\CommonsUI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jocutuli\Desktop\Commons MVC\Commons MVC\CommonsUI\obj\Debug\netcoreapp2.1\CommonsUI.AssemblyInfoInputs.cache
+C:\Users\jocutuli\Desktop\Commons MVC\Commons MVC\CommonsUI\obj\Debug\netcoreapp2.1\CommonsUI.AssemblyInfo.cs
+C:\Users\jocutuli\Desktop\Commons MVC\Commons MVC\CommonsUI\obj\Debug\netcoreapp2.1\CommonsUI.csproj.CoreCompileInputs.cache
+C:\Users\jocutuli\Desktop\Commons MVC\Commons MVC\CommonsUI\obj\Debug\netcoreapp2.1\CommonsUI.dll
+C:\Users\jocutuli\Desktop\Commons MVC\Commons MVC\CommonsUI\obj\Debug\netcoreapp2.1\CommonsUI.pdb

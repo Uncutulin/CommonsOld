@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <Version>1.0.10</Version>
+    <Authors>sscalgaro</Authors>
+    <Company>IsCoders</Company>
+    <MvcRazorExcludeRefAssembliesFromPublish>false</MvcRazorExcludeRefAssembliesFromPublish>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Pages/**/*.cshtml" />
+    <EmbeddedResource Include="wwwroot/js/**/*.js" />
+    <EmbeddedResource Include="wwwroot/css/**/*.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="wwwroot\js\commons\confirm_modal.min.js" />
+  </ItemGroup>
+
+
+  
+
+</Project>

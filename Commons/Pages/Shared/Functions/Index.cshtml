@@ -1,0 +1,80 @@
+﻿@addTagHelper *, Commons
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Funciones";
+    Layout = "_Layout";
+    ViewData["BackArrow"] = "/Home/Index";
+}
+
+
+
+<box color="Danger">
+    <box-header title="Listado">
+        <a class="btn btn-danger pull-right btn-sm" onclick="Create()">Nueva</a>
+    </box-header>
+    <box-body>
+        <table id="functionsTable" class="table table-striped table-hover">
+        </table>
+    </box-body>
+</box>
+
+<modal title="Nueva funcion" function="Create" load-url="/SecurityFunctions/_Create/"></modal>
+
+<script>
+     $(function() {
+             var classesTable = $('#functionsTable').DataTable({
+                 serverSide: true,
+                 processing: true,
+                 responsive: {
+                     details: false
+                 },
+                 ajax: {
+                     url: '@Url.Action("FunctionsDataTable", "SecurityFunctions")',
+                     type: "POST"
+                 },
+                 rowId: 'Id',
+                 columns: [
+                     {
+                         data: "Name",
+                         title: "Nombre",
+                         "responsivePriority": 1
+                     },
+                     { data: "Description", title: "Descripción", searchable: false,
+                        "responsivePriority": 2 },
+                    { data: "LastEditTime", title: "Ultima edición",
+                        "responsivePriority": 3 },
+                    {
+                        "title": "Mostrar",
+                        "sortable": false,
+                        "render": function(data, type, row) {
+                            if (row['Show']) {
+                                return `<span class='label label-success'>Si</span>`;
+                            } else {
+                                return `<span class='label label-danger'>No</span>`;
+                            }
+                        },
+                        "responsivePriority": 2
+                    },
+                    {
+                        "title": "Actions",
+                        "sortable": false,
+                        "responsivePriority": 1,
+                        "render": function(data, type, row) {
+                            var action = '';
+                            {
+                                action = action +
+                                    ` <a data-toggle='tooltip' title='Ver rutas' href="@Url.Action("Routes", "SecurityFunctions")/${
+                                    row['Id']}" class="btn btn-warning btn-xs"><i class="fa fa-lock"></i></a>`;
+                                action = action +
+                                    ` <a data-confirmbodytext="¿Esta seguro de que desea eliminar esta función? Se eliminará de todos los roles." data-confirmicon="Danger" data-toggle='tooltip' title='Eliminar' href="@Url.Action("Delete", "SecurityFunctions")/${
+                                    row['Id']}" class="btn btn-danger btn-xs"><i class="fa fa-remove"></i></a>`;
+                            }
+                            return action;
+                        }
+                    }
+
+                ]
+            });
+        }
+    )
+</script>

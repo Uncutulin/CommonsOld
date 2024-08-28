@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v2.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v2.1": {
+      "CommonsUI/1.0.10": {
+        "runtime": {
+          "CommonsUI.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CommonsUI/1.0.10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

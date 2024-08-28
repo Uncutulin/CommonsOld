@@ -1,0 +1,1 @@
+﻿./nuget.exe push -Source "Commons" -ApiKey AzureDevOps .\Commons.1.2.18-beta3.nupkg

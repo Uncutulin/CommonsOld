@@ -1,0 +1,63 @@
+﻿@model Commons.Identity.CommonsFunction
+@addTagHelper *, Commons
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewBag.Title = $"Editar función: {Model.Name}";
+    Layout = "_Layout";
+    ViewData["BackArrow"] = "/SecurityFunctions/Index";
+}
+
+<box color="Primary">
+    <box-header title="Rutas de la función">
+        <a class="btn btn-primary btn-sm" onclick="AddRoute('@Model.Id')">Añadir</a>
+    </box-header>
+    <box-body>
+        <table id="routesTable" class="table table-hover table-striped"></table>
+    </box-body>
+</box>
+
+<modal function="AddRoute" title="Seleccione una ruta" load-url="/SecurityFunctions/_AddRoute/"></modal>
+
+
+<script>
+      $(function() {
+            var classesTable = $('#routesTable').DataTable({
+                serverSide: true,
+                processing: true,
+                responsive: {
+                    details: false
+                },
+                ajax: {
+                    url: '@Url.Action("RoutesDataTable", "SecurityFunctions")?functionId=@Model.Id',
+                    type: "POST"
+                },
+                rowId: 'Url',
+                columns: [
+                    { data: "Area", title: "Area",
+                        "responsivePriority": 1 },
+                    { data: "Controller", title: "Controller",
+                        "responsivePriority": 1 },
+                    { data: "Action", title: "Action",
+                        "responsivePriority": 1 },
+                    { data: "Url", title: "Url",
+                        "responsivePriority": 5 },
+                    {
+                        "title": "Actions",
+                        "sortable": false,
+                        "responsivePriority": 1,
+                        "render": function(data, type, row) {
+                            var action = '';
+                            {
+                                action = action +
+                                    ` <a data-toggle='tooltip' title='Eliminar' href="@Url.Action("RemoveRoute", "SecurityFunctions")?route=${
+                                    row['Url']}&functionId=@Model.Id" class="btn btn-danger btn-xs"><i class="fa fa-remove"></i></a>`;
+                            }
+                            return action;
+                        }
+                    }
+
+                ]
+            });
+        }
+    )
+</script>

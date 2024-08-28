@@ -1,0 +1,270 @@
+﻿@using Commons.Identity
+@model CommonsDev.Data.Institute
+@{
+    ViewData["Title"] = "Commons Framework Tests";
+}
+
+<style>
+</style>
+
+<form asp-action="Bool">
+    <box>
+        <box-header title="iCheck" minimize="true" close="true"></box-header>
+        <box-body>
+
+            <div class="form-group">
+                <input asp-for="ThisIsBool" type="checkbox" />
+            </div>
+            <div class="form-group">
+                <input color="Danger" type="checkbox" name="2" id="2" />
+                <label for="2">2</label>
+            </div>
+            <div class="form-group">
+                <input type="radio" name="iCheck">
+                <label>1</label>
+            </div>
+            <div class="form-group">
+                <input type="radio" name="iCheck" checked>
+                <label>1</label>
+            </div>
+        </box-body>
+        <box-footer>
+            <button class="btn btn-info pull-right" type="submit">Send</button>
+        </box-footer>
+    </box>
+</form>
+
+<box>
+    <box-header title="Mis permisos"></box-header>
+    <box-body>
+        <table id="perTable" class="table table-striped table-bordered dt-responsive nowrap">
+            <thead>
+                <tr>
+                    <th>
+                        Route
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (string route in (ViewBag.Routes ?? new List<string>()))
+                {
+                    <tr>
+                        <td>
+                            @route
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </box-body>
+    <box-footer>
+        <a asp-action="GenerateRandomFunctions">Generar random function</a>
+    </box-footer>
+</box>
+
+<script>
+    $(document).ready(function () {
+        $('#perTable').DataTable();
+    });
+</script>
+
+<box color="Info">
+    <box-header title="Selects" minimize="true" close="true"></box-header>
+
+    <box-body>
+        <h4 class="text-muted">Simple Selectpicker</h4>
+        <select title="Elegir una opcion:"
+                class="form-control pull-right"
+                searchable="false"
+                menu-header="Header"
+                color="Success"
+                multiple-max-options="2">
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+        </select>
+
+        <br />
+        <br />
+
+        <h4 class="text-muted">Commons Ajax Selecktpicker</h4>
+        <select-ajax title="Fully customizable"
+                     class="form-control"
+                     url="@Url.Action("SelectListJson")"
+                     color="Info"
+                     menu-size="10"
+                     multiple-max-options="2"
+                     class-btn="btn-flat"
+                     text-no-results="Oh no! No encontraste nada!"
+                     text-initialized="Ejem... Estamos esperando que escribas algo..."
+                     text-placeholder="Acá es donde tenés que escribir... duh!"
+                     route-name="q">
+        </select-ajax>
+
+        <br />
+        <br />
+
+        <h4 class="text-muted">Ajax search selectpicker</h4>
+
+        <select class="with-ajax"
+                id="selectpicker"
+                title="test"
+                menu-header="Header"
+                searchable="true"
+                class-btn="btn-sm btn-flat"
+                color="Primary"></select>
+
+        <script>
+
+
+            var options = {
+                values: "a, b, c",
+                ajax: {
+                    url: "@Url.Action("SelectListJson2")",
+                    type: "POST",
+                    dataType: "json",
+                    // Use "{{{q}}}" as a placeholder and Ajax Bootstrap Select will
+                    // automatically replace it with the value of the search query.
+                    data: {
+                        q: "{{{q}}}"
+                    }
+                },
+                locale: {
+                    //emptyTitle: "",
+                    statusSearching: "Buscando coincidencias...",
+                    statusNoResults: "No se encontraron coincidencias.",
+                    statusInitialized: "Escriba un texto para buscar...",
+                    searchPlaceholder: "Placeholder",
+                    currentlySelected: "Seleccionado"
+                },
+                log: 3,
+                preprocessData: function(data) {
+                    var i,
+                        l = data.length,
+                        array = [];
+                    if (l) {
+                        for (i = 0; i < l; i++) {
+                            array.push(
+                                $.extend(true, data[i], {
+                                    text: data[i].Text,
+                                    value: data[i].Value,
+                                    class: data[i].Class,
+                                    disabled: data[i].Disabled,
+                                    divider: data[i].Divider,
+                                    data: {
+                                        subtext: data[i].Subtext,
+                                        content: data[i].Content,
+                                        icon: data[i].Icon
+                                    }
+                                })
+                            );
+                        }
+                    }
+                    // You must always return a valid array when processing data. The
+                    // data argument passed is a clone and cannot be modified directly.
+                    return array;
+                }
+            };
+
+            $("#selectpicker")
+                .selectpicker()
+                .filter(".with-ajax")
+                .ajaxSelectPicker(options);
+            $("select").trigger("change");
+
+            function chooseSelectpicker(index, selectpicker) {
+                $(selectpicker).val(index);
+                $(selectpicker).selectpicker('refresh');
+            }
+
+
+        </script>
+
+    </box-body>
+
+</box>
+
+
+<box color="Info">
+    <box-header title="Request loaded box" minimize="true" close="true"></box-header>
+
+    <box-body>
+        <div class="row">
+            <div class="col-md-6">
+
+                <a href="/Home?nro=@ViewBag.Nro"
+                   title="test"
+                   confirm="¿Está seguro de que este framework funciona correctamente?"
+                   confirm-yes="Sí"
+                   confirm-no="No"
+                   confirm-title="¿Vos decís?"
+                   confirm-icon="Danger"
+                   data-conf="Estoy pisando el otro texto. Comentame."
+                   class="btn btn-primary btn-lg">
+                    Confirm modal: Suma 1 a la cuenta
+                </a>
+
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-aqua"><i class="fa fa-user"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text">Cuenta</span>
+                                <span class="info-box-number">@ViewBag.Nro<small></small></span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </box-body>
+
+    <box-footer>
+        <a class="btn btn-success"
+           ajax-update-div="#testAjax"
+           ajax-mode="Before"
+           asp-action="_Partial"
+           data-conf="Test conf dataajax">
+            Llamada de ajax: Modo before
+        </a>
+    </box-footer>
+</box>
+
+
+
+<div id="testAjax"></div>
+<load load-url="/Home/_Partial"></load>
+
+<div class="text-center">
+    <a class="btn btn-primary btn-flat btn-lg" onclick="EditRoles('@ViewBag.UserId')">Editar Roles del usuario logeado test</a>
+</div>
+
+<modal title="Editar roles" function="EditRoles" load-url="@Url.Action("_Assign", "SecurityRoles")"></modal>
+
+<br />
+<br />
+
+<a onclick="file()" data-conf="Test de conf en caso de ajax." class="btn btn-primary">UploadFile</a>
+
+<modal function="file" load-url="@Url.Action("File")"></modal>
+
+<br />
+<br />
+
+
+
+<box color="Info">
+    <box-header title="Modal Error PartialView" minimize="true" close="true"></box-header>
+
+    <box-body>
+        <a class="btn btn-danger" onclick="error()">Modal Error</a>
+
+    </box-body>
+</box>
+        <modal title="Modal test" function="error" load-url="@Url.Action("_ModalError")"></modal>

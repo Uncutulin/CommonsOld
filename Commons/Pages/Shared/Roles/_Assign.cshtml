@@ -1,0 +1,112 @@
+﻿@using Commons.Identity
+@model string
+@addTagHelper *, Commons
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    List<CommonsRole> userRolesList = (List<CommonsRole>)ViewBag.UserRoles;
+}
+
+<div id="assignDiv">
+    <div class="row">
+        <div class="col-md-12 ">
+            @if (userRolesList == null || !userRolesList.Any())
+            {
+                <div class="btn-group pull-right">
+                    <a href="#" data-toggle="dropdown">
+                        <i class="fa fa-gear"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a asp-action="_MakeAdmin"
+                               asp-controller="SecurityRoles"
+                               asp-route-userId="@Model"
+                               data-ajax="true"
+                               data-ajax-method="GET"
+                               data-ajax-mode="replace"
+                               data-ajax-update="#assignDiv">
+                                Convertir en administrador
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="text-muted">
+                    <p style="text-align: center; margin: 0">No tiene roles asignados.</p>
+                </div>
+            }
+            else
+            {
+                <table class="table table-striped table-responsive table-hover">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th>
+                                <div class="btn-group">
+                                    <a href="#" data-toggle="dropdown">
+                                        <i class="fa fa-gear"></i>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a asp-action="_MakeAdmin"
+                                               asp-controller="SecurityRoles"
+                                               asp-route-userId="@Model"
+                                               data-ajax="true"
+                                               data-ajax-method="GET"
+                                               data-ajax-mode="replace"
+                                               data-ajax-update="#assignDiv">
+                                                Convertir en administrador
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var role in userRolesList)
+                        {
+                            <tr>
+                                <td>@role.ShowName</td>
+                                <td>@role.Description</td>
+                                <td>
+                                    <a asp-action="_Unassign"
+                                       asp-route-userId="@Model"
+                                       asp-route-roleId="@role.Id"
+                                       data-ajax="true"
+                                       data-ajax-method="GET"
+                                       data-ajax-mode="replace"
+                                       data-ajax-update="#assignDiv">
+                                        <i class="fa fa-remove"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            }
+        </div>
+    </div>
+
+    <br />
+
+    <div class="row">
+        <div class="col-md-12">
+            <form asp-action="_Assign"
+                  data-ajax="true"
+                  data-ajax-method="POST"
+                  data-ajax-mode="replace"
+                  data-ajax-update="#assignDiv">
+                <div class="input-group">
+                    <input type="hidden" name="userId" value="@Model" />
+                    <select class="form-control flat" title="Asignar nuevo rol..." data-width="100%" name="roleId" asp-items="@ViewBag.Roles"></select>
+                    <div class="input-group-btn">
+                        <button class="btn btn-default pull-right btn-flat btn-info" type="submit"><i class="fa fa-plus"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

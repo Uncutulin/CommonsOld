@@ -1,0 +1,84 @@
+﻿/* ESTO ES PARA PODER PONER COLORES A LOS INPUT-GROUP-ADDON */
+
+.input-group-addon.primary {
+    color: rgb(255, 255, 255);
+    background-color: rgb(50, 118, 177);
+    border-color: rgb(40, 94, 142);
+}
+
+.input-group-addon.success {
+    color: rgb(255, 255, 255);
+    background-color: rgb(92, 184, 92);
+    border-color: rgb(76, 174, 76);
+}
+
+.input-group-addon.info {
+    color: rgb(255, 255, 255);
+    background-color: rgb(57, 179, 215);
+    border-color: rgb(38, 154, 188);
+}
+
+.input-group-addon.warning {
+    color: rgb(255, 255, 255);
+    background-color: rgb(240, 173, 78);
+    border-color: rgb(238, 162, 54);
+}
+
+.input-group-addon.danger {
+    color: rgb(255, 255, 255);
+    background-color: rgb(217, 83, 79);
+    border-color: rgb(212, 63, 58);
+}
+
+.input-group-addon.default {
+    background-color: #f4f4f4;
+    color: #444;
+    border-color: #ddd;
+}
+
+/* PARA LAS TABLAS QUE SE CARGAN ASINCRONICAS CON UN MARGEN */
+
+.table {
+    margin-bottom: 0 !important
+}
+
+td > .btn-group {
+    position: absolute;
+}
+
+/*.dropdown-menu {
+    top: 93%;
+}*/
+
+/* PARA LOS MODALS */
+
+.modal-content > .loader {
+    position: relative;
+    text-align: center;
+    font-size: 30px;
+    /*margin: 60px auto 35px auto;*/
+    z-index: 9999;
+    display: block;
+}
+
+
+/* Material iCheck fix */
+
+div[class*='icheck-material']{
+    display: unset !important;
+}
+    
+div[class*='icheck-material'] + label {
+    line-height: 22px;
+    cursor: pointer;
+}
+
+/*
+    Bordes negros en el tbody
+*/
+.table-bordered thead > tr > th, .table thead > tr > td {
+    border-bottom: 2px solid black;
+}
+.table-bordered {
+    border-bottom: 2px solid black;
+}

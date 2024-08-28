@@ -1,0 +1,15 @@
+﻿@model string
+@addTagHelper *, Commons
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<div class="row">
+    <div class="col-md-12">
+
+        <form asp-action="_AddFunction">
+            <input type="hidden" value="@Model" name="roleId" />
+            <div class="form-group">
+                <select asp-items="@ViewBag.Functions" data-width="100%" name="functionId"></select>
+            </div>
+            <button class="btn btn-danger pull-right" type="submit">Aceptar</button>
+        </form>
+    </div>
+</div>

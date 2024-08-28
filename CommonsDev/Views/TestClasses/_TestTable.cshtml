@@ -1,0 +1,65 @@
+﻿@model Commons.Models.Page<CommonsDev.Models.TestClass>
+
+<div id="updatediv">
+
+    <box-header title="List" minimize="true" close="false">
+        <box-search class="hidden-xs" update-div="updatediv">
+
+
+            <div class="input-group input-group-sm pull-right">
+                <a title="Creates 1000 new tests" asp-action="RandomTest" class="btn btn-sm btn-danger"><i class="fa fa-bolt"></i><span class="hidden-xs"> Random tests</span></a>
+            </div>
+            <div class="input-group input-group-sm pull-right">
+                <a title="Nuevo" asp-action="Create" class="btn btn-sm btn-default hidden-xs"><i class="fa fa-plus"></i></a>
+            </div>
+        </box-search>
+
+        <div class="input-group input-group-sm pull-right">
+            <span data-toggle="tooltip" title="" class="badge bg-yellow" data-original-title="Total tests">@Model.TotalCount</span>
+        </div>
+    </box-header>
+    <box-body table="true">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        TipoDoc
+                    </th>
+                    <th>
+                        Doc
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Items)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TipoDoc)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Doc)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </box-body>
+    <box-footer page-update-div="updatediv">
+
+    </box-footer>
+
+    <load load-url="/Home/_Partial"></load>
+</div>
